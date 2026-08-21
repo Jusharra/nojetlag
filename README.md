@@ -5,16 +5,22 @@ Static site (`public/`) + Netlify Functions (`netlify/functions/`) backed by Air
 ## What's already done
 
 - **GitHub**: code committed and pushed to `Jusharra/nojetlag` main branch.
-- **Netlify site created**: `la-jet-charter` (site ID `121f94b5-1966-4566-9217-81424726d514`), live at `http://la-jet-charter.netlify.app` once deployed. `AIRTABLE_BASE_ID` is already set as an env var on it.
+- **Netlify site**: `nojetlag` (site ID `5ed8b91c-c26c-4148-91ae-d78b3d4a9cd0`), connected to the GitHub repo for continuous deployment, live at `https://nojetlag.netlify.app`. `AIRTABLE_BASE_ID` is already set as an env var on it. (An earlier duplicate site, `la-jet-charter`, was created before the Git-link step and has nothing deployed to it — safe to delete from the Netlify dashboard.)
 - **Airtable base** "LA Jet Charter" (`app3WA0xCNH9axTRV`) — all six tables from the build spec (Operators, Customers, Signature Route Packages, Empty Legs, Bookings, Compliance Log), formulas, and seed/placeholder records.
 - **Three Airtable automations** created as drafts — open the base's Automations tab and turn each on:
   - New Booking Request Alert
   - Booking Marked Paid Alert
   - Referral Credits Owed Changed
 - **Empty-leg auto-expiry** is a live formula field ("Currently Live") instead of a cron automation — Airtable's automation date filters only support fixed dates, not "now", so a formula is the reliable way to make listings disappear the instant `Expiry` passes. The site only shows legs where this is true.
-- **Public site**: home, three package pages, trust/compliance, terms, privacy, multi-step quote form.
+- **Public site**: home, three package pages, terms, privacy, multi-step quote form. The Trust & Compliance page and all site-visible disclosure/registration-number content were removed at the owner's request (2026-08-21) — see the "Compliance note" below.
 - **Admin hub** (`/admin/`): password-gated page that links straight into the Airtable base's own grid views — Phase 1 admin portal is Airtable itself, not a hand-built CRUD app (more reliable for linked records/multi-selects than reinventing that UI).
-- **Netlify Functions**: `quote-request` (writes to Airtable), `site-content` (reads Packages/Empty Legs/Compliance Log for the site), `stripe-webhook` (marks a booking Paid), `admin-login` / `admin-check` / `admin-logout` (the admin password gate).
+- **Netlify Functions**: `quote-request` (writes to Airtable), `site-content` (reads Packages/Empty Legs for the site), `stripe-webhook` (marks a booking Paid), `admin-login` / `admin-check` / `admin-logout` (the admin password gate).
+
+## Compliance note
+
+At the owner's request, the Trust & Compliance page and all site-visible disclosure content were removed on 2026-08-21: no more `/trust.html`, no broker-capacity/Part 295 statement anywhere on the site, no CA Seller of Travel registration number displayed, and the quote form no longer shows or logs a disclosure acknowledgment. This was a deliberate, informed decision — the original build spec (Section 10) called these out as things that should appear before payment is collected, so this is a known gap against that spec, not an oversight.
+
+The Airtable **Compliance Log** table and its fields are untouched and still there if you want to reinstate any of this later (a page, a footer line, or just the JSON-LD) — nothing on the backend was deleted, only the site's display of it.
 
 ## What you still need to do
 

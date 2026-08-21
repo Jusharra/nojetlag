@@ -33,30 +33,13 @@ async function fetchEmptyLegs() {
   }));
 }
 
-async function fetchDisclosure() {
-  const records = await base('Compliance Log')
-    .select({ maxRecords: 1 })
-    .all();
-  if (!records.length) return null;
-  const r = records[0];
-  return {
-    regNumber: r.get('Seller of Travel Reg Number'),
-    disclosureText: r.get('Full Disclosure Text'),
-    disclosureVersion: r.get('Disclosure Text Version'),
-  };
-}
-
 exports.handler = async () => {
   try {
-    const [packages, emptyLegs, disclosure] = await Promise.all([
-      fetchPackages(),
-      fetchEmptyLegs(),
-      fetchDisclosure(),
-    ]);
+    const [packages, emptyLegs] = await Promise.all([fetchPackages(), fetchEmptyLegs()]);
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=60' },
-      body: JSON.stringify({ packages, emptyLegs, disclosure }),
+      body: JSON.stringify({ packages, emptyLegs }),
     };
   } catch (err) {
     console.error(err);

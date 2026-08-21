@@ -28,7 +28,7 @@ async function fetchSiteContent() {
     })
     .catch((err) => {
       console.error(err);
-      return { packages: [], emptyLegs: [], disclosure: null };
+      return { packages: [], emptyLegs: [] };
     });
   return window.__siteContentPromise;
 }
@@ -36,19 +36,13 @@ async function fetchSiteContent() {
 function initSiteContent() {
   const packagesEl = document.getElementById('packages-grid');
   const legsEl = document.getElementById('empty-legs-list');
-  const disclosureEls = document.querySelectorAll('[data-disclosure-text]');
-  const regNumberEls = document.querySelectorAll('[data-reg-number]');
   const packagePriceEl = document.querySelector('[data-package-price]');
 
-  if (!packagesEl && !legsEl && !disclosureEls.length && !regNumberEls.length && !packagePriceEl) return;
+  if (!packagesEl && !legsEl && !packagePriceEl) return;
 
-  fetchSiteContent().then(({ packages, emptyLegs, disclosure }) => {
+  fetchSiteContent().then(({ packages, emptyLegs }) => {
     if (packagesEl) renderPackages(packagesEl, packages);
     if (legsEl) renderEmptyLegs(legsEl, emptyLegs);
-    if (disclosure) {
-      disclosureEls.forEach((el) => { el.textContent = disclosure.disclosureText || ''; });
-      regNumberEls.forEach((el) => { el.textContent = disclosure.regNumber || 'CST # pending'; });
-    }
     if (packagePriceEl) {
       const slug = packagePriceEl.getAttribute('data-package-price');
       const pkg = packages.find((p) => p.name.toLowerCase() === slug.toLowerCase());

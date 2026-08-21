@@ -73,8 +73,6 @@ exports.handler = async (event) => {
           'Aircraft Preference': aircraftPreference || '',
           Status: 'New Request',
           Notes: notes || '',
-          'Part 295 Disclosure Shown': true,
-          'Part 295 Disclosure Shown At': new Date().toISOString(),
         },
       },
     ]);
