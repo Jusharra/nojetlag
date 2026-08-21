@@ -1,0 +1,13 @@
+{
+  "name": "la-jet-charter",
+  "version": "1.0.0",
+  "private": true,
+  "description": "LA private jet charter broker site + Netlify Functions backend (Airtable + Stripe)",
+  "scripts": {
+    "dev": "netlify dev"
+  },
+  "dependencies": {
+    "airtable": "^0.12.2",
+    "stripe": "^17.4.0"
+  }
+}

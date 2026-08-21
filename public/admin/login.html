@@ -1,0 +1,39 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login — LA Jet Charter</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/styles.css">
+
+<section style="min-height:100vh;display:flex;align-items:center;justify-content:center;">
+  <form id="login-form" class="form-panel" style="width:100%;max-width:380px;">
+    <div class="brand text-center" style="margin-bottom:1.5rem;">LA Jet <span>Charter</span></div>
+    <h3 class="text-center">Admin</h3>
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" required autofocus>
+    <button type="submit" class="btn btn-primary btn-block mt-lg">Sign in</button>
+    <div id="login-msg" class="form-msg error" style="display:none;"></div>
+  </form>
+</section>
+
+<script>
+  document.getElementById('login-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const password = document.getElementById('password').value;
+    const msg = document.getElementById('login-msg');
+    try {
+      const res = await fetch('/api/admin-login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password }),
+      });
+      if (!res.ok) throw new Error((await res.json()).error || 'Login failed');
+      window.location.href = '/admin/';
+    } catch (err) {
+      msg.textContent = err.message;
+      msg.style.display = 'block';
+    }
+  });
+</script>

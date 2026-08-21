@@ -1,0 +1,196 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LA Jet Charter — Private Jet Charter Broker, Los Angeles</title>
+<meta name="description" content="Los Angeles private jet charter broker. Signature route packages to Vegas, Cabo, and Aspen, plus live empty-leg deals. Licensed broker, FAA Part 135 operators only.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/styles.css">
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="/" class="brand">LA Jet <span>Charter</span></a>
+    <ul class="nav-links">
+      <li><a href="/#packages">Packages</a></li>
+      <li><a href="/#empty-legs">Empty Legs</a></li>
+      <li><a href="/trust.html">Trust &amp; Compliance</a></li>
+      <li><a href="/#quote">Request a Quote</a></li>
+    </ul>
+    <a class="btn btn-primary nav-cta" href="/#quote">Request a Quote</a>
+    <button class="nav-toggle" aria-label="Menu">&#9776;</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">Los Angeles &middot; Private Aviation Broker</span>
+      <h1>Wheels up, without the runaround.</h1>
+      <p class="lede">We source and coordinate private jet charters out of Van Nuys, Burbank, and Santa Monica — matching your trip with vetted, FAA-certificated operators and handling every detail in between.</p>
+      <div class="hero-actions">
+        <a href="#quote" class="btn btn-primary">Request a Quote</a>
+        <a href="#empty-legs" class="btn btn-outline">See Empty Leg Deals</a>
+      </div>
+    </div>
+    <div>
+      <p class="lede" style="font-size:1rem;color:var(--text-tertiary);">Every flight is operated by a FAA Part 135-certificated air carrier. LA Jet Charter acts as your broker/agent — we arrange, we don't operate.</p>
+    </div>
+  </div>
+  <div class="container stat-strip">
+    <div class="stat"><b>3</b><span>Signature routes: Vegas, Cabo, Aspen</span></div>
+    <div class="stat"><b>24/7</b><span>Quote requests, any time</span></div>
+    <div class="stat"><b>Part 135</b><span>Verified operators only</span></div>
+    <div class="stat"><b>1</b><span>Point of contact, start to finish</span></div>
+  </div>
+</section>
+
+<section id="how-it-works">
+  <div class="container">
+    <span class="eyebrow">How it works</span>
+    <h2>Four steps to wheels up</h2>
+    <div class="steps">
+      <div class="step"><span class="num">01</span><h3>Tell us the trip</h3><p>Route, dates, passengers, and any aircraft preference — takes under two minutes.</p></div>
+      <div class="step"><span class="num">02</span><h3>We source quotes</h3><p>We request pricing from verified, Part 135-certificated operators on your route.</p></div>
+      <div class="step"><span class="num">03</span><h3>You approve pricing</h3><p>We present one clear, all-in price — no hidden fees, no guessing.</p></div>
+      <div class="step"><span class="num">04</span><h3>You fly</h3><p>We coordinate the details with your operator so you just show up.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="packages" style="background:var(--bg-panel);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="container">
+    <span class="eyebrow">Signature Route Packages</span>
+    <h2>Bundled charter + stay, done right</h2>
+    <p>Charter flight, hotel value, and ground transport bundled into one starting price. Hotel activation fees are always included in your quote — never billed as a surprise "free stay" fee.</p>
+    <div id="packages-grid" class="card-grid">
+      <p style="color:var(--text-tertiary);">Loading packages…</p>
+    </div>
+  </div>
+</section>
+
+<section id="empty-legs">
+  <div class="container">
+    <span class="eyebrow">Empty Leg Deals</span>
+    <h2>Repositioning flights, deep discounts</h2>
+    <p>These are one-way repositioning legs our operator network needs to fly anyway — booked at a steep discount to retail charter pricing. Listings disappear once they expire.</p>
+    <div id="empty-legs-loading">Loading current empty-leg deals…</div>
+    <div id="empty-legs-empty" style="display:none;">No empty-leg deals are live right now — check back soon, or <a href="#quote" style="color:var(--accent);">request a custom quote</a>.</div>
+    <div id="empty-legs-list"></div>
+  </div>
+</section>
+
+<section style="background:var(--bg-panel);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="container">
+    <span class="eyebrow">Trust &amp; Compliance</span>
+    <h2>We're brokers, not a hidden middleman</h2>
+    <div class="trust-box" data-disclosure-text>Loading disclosure statement…</div>
+    <p class="mt-lg"><a href="/trust.html" style="color:var(--accent);">Read our full trust &amp; compliance disclosure &rarr;</a></p>
+  </div>
+</section>
+
+<section id="quote">
+  <div class="container">
+    <span class="eyebrow">Request a Quote</span>
+    <h2 class="text-center">Start your trip</h2>
+    <form id="quote-form" class="form-panel">
+      <div class="form-progress"><span class="done"></span><span></span></div>
+
+      <div class="form-step active">
+        <h3>Trip details</h3>
+        <div class="form-grid">
+          <div class="full">
+            <label for="type">Trip type</label>
+            <select id="type" name="type">
+              <option value="Custom Charter">Custom Charter</option>
+              <option value="Signature Package">Signature Package</option>
+              <option value="Empty Leg">Empty Leg</option>
+            </select>
+          </div>
+          <div class="full">
+            <label for="route">Route</label>
+            <input id="route" name="route" placeholder="e.g. Van Nuys (VNY) to Las Vegas (LAS)" required>
+          </div>
+          <div>
+            <label for="dates">Date(s)</label>
+            <input id="dates" name="dates" placeholder="e.g. Sept 12, return Sept 14" required>
+          </div>
+          <div>
+            <label for="passengers">Passengers</label>
+            <input id="passengers" name="passengers" type="number" min="1" max="19" required>
+          </div>
+          <div class="full">
+            <label for="aircraftPreference">Aircraft preference (optional)</label>
+            <input id="aircraftPreference" name="aircraftPreference" placeholder="e.g. light jet, no preference">
+          </div>
+          <div class="full">
+            <label for="notes">Notes</label>
+            <textarea id="notes" name="notes" placeholder="Anything else we should know?"></textarea>
+          </div>
+        </div>
+        <div class="form-actions">
+          <span></span>
+          <button type="button" class="btn btn-primary" data-next>Continue</button>
+        </div>
+      </div>
+
+      <div class="form-step">
+        <h3>Contact info</h3>
+        <div class="form-grid">
+          <div class="full">
+            <label for="name">Full name</label>
+            <input id="name" name="name" required>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required>
+          </div>
+          <div>
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel">
+          </div>
+        </div>
+        <p style="font-size:0.82rem;margin-top:1rem;">By submitting, you acknowledge LA Jet Charter acts as an air charter broker, not an operator — see our <a href="/trust.html" style="color:var(--accent);">Trust &amp; Compliance disclosure</a>. Pricing shown anywhere on this site is "starting at" only; your final price is confirmed once an operator quote is accepted.</p>
+        <div class="form-actions">
+          <button type="button" class="btn btn-outline" data-prev>Back</button>
+          <button type="submit" class="btn btn-primary">Submit request</button>
+        </div>
+      </div>
+
+      <div id="quote-form-msg" class="form-msg" style="display:none;"></div>
+    </form>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom:1rem;">LA Jet <span>Charter</span></div>
+        <p>Private aviation, arranged. We broker charter flights with FAA Part 135-certificated operators — we never operate aircraft ourselves.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="/packages/vegas.html">Vegas</a></li>
+          <li><a href="/packages/cabo.html">Cabo</a></li>
+          <li><a href="/packages/aspen.html">Aspen</a></li>
+          <li><a href="/#empty-legs">Empty Legs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/trust.html">Trust &amp; Compliance</a></li>
+          <li><a href="/terms.html">Terms of Service</a></li>
+          <li><a href="/privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-disclosure">
+      <p data-disclosure-text>Loading disclosure statement…</p>
+      <p>California Seller of Travel Registration: <span data-reg-number>CST # pending</span>. &copy; <span id="year"></span> LA Jet Charter. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="/js/main.js"></script>

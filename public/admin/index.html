@@ -1,0 +1,77 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — LA Jet Charter</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/styles.css">
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="/admin/" class="brand">LA Jet <span>Charter</span> Admin</a>
+    <button id="logout-btn" class="btn btn-outline">Log out</button>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Admin Hub</span>
+    <h1>Everything lives in Airtable</h1>
+    <p>This is the system of record — every card below opens straight into the live base. Phase 1 uses Airtable's own grid/kanban views as the admin portal rather than a hand-built CRUD app, so linked records, multi-selects, and filters all work exactly as Airtable intends.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="card-grid">
+      <a class="card" href="https://airtable.com/app3WA0xCNH9axTRV/tblNKAwhyZ7ZFKGon/viwt07DcEPxvczg1D" target="_blank" rel="noopener">
+        <span class="badge">Pipeline</span>
+        <h3>Bookings</h3>
+        <p>New requests through completed trips. Open this view once and add a Kanban view grouped by Status for the pipeline board — Airtable's View menu &rarr; + &rarr; Kanban, group by "Status".</p>
+      </a>
+      <a class="card" href="https://airtable.com/app3WA0xCNH9axTRV/tblELtgtWUIyJ9uB6/viwhwZoM0MYvF3Vyg" target="_blank" rel="noopener">
+        <span class="badge">Roster</span>
+        <h3>Operators</h3>
+        <p>Base airports, aircraft categories, Part 135 verification status, and relationship type.</p>
+      </a>
+      <a class="card" href="https://airtable.com/app3WA0xCNH9axTRV/tbltoK0plIo9brvEq/viwMv7DtX6v0xWo59" target="_blank" rel="noopener">
+        <span class="badge">Live Feed</span>
+        <h3>Empty Legs</h3>
+        <p>Add a listing here and it appears on the live site within a minute. Set Status to Active and an Expiry — it disappears automatically once Expiry passes.</p>
+      </a>
+      <a class="card" href="https://airtable.com/app3WA0xCNH9axTRV/tblQZ1ISHhPuq4EH1/viwf7y1DQVpQ5eXhF" target="_blank" rel="noopener">
+        <span class="badge">CRM</span>
+        <h3>Customers</h3>
+        <p>Contact info, referral credits, opt-ins, and tags. Booking history links in automatically.</p>
+      </a>
+      <a class="card" href="https://airtable.com/app3WA0xCNH9axTRV/tblPcwJdx9l84lRKa/viwPCg3dmbDJSdbPu" target="_blank" rel="noopener">
+        <span class="badge">Content</span>
+        <h3>Signature Route Packages</h3>
+        <p>Edit pricing and included items here — changes appear on the live site within a minute. No deploy needed.</p>
+      </a>
+      <a class="card" href="https://airtable.com/app3WA0xCNH9axTRV/tblO4Apl9d9yQKo7t/viwzq4T9JvskWgZpd" target="_blank" rel="noopener">
+        <span class="badge">Compliance</span>
+        <h3>Compliance Log</h3>
+        <p>Seller of Travel registration, insurance, and the live Part 295 disclosure text shown site-wide.</p>
+      </a>
+    </div>
+
+    <div class="trust-box mt-lg">
+      <strong>One-time setup still needed in Airtable:</strong> three automations were created as drafts (New Booking Alert, Booking Marked Paid, Referral Credits Changed) — open Automations in the base and turn each one on. Also add a Kanban view to Bookings grouped by Status for a visual pipeline board.
+    </div>
+  </div>
+</section>
+
+<script>
+  fetch('/api/admin-check')
+    .then((r) => r.json())
+    .then(({ authenticated }) => {
+      if (!authenticated) window.location.href = '/admin/login.html';
+    });
+
+  document.getElementById('logout-btn').addEventListener('click', async () => {
+    await fetch('/api/admin-logout', { method: 'POST' });
+    window.location.href = '/admin/login.html';
+  });
+</script>
