@@ -74,6 +74,29 @@ Not wired yet — Airtable's native automations only send email. Once you're rea
 - Compliance Log has a placeholder CST registration number and draft disclosure text — update both once you're registered.
 - Signature Route Packages has placeholder starting prices for Vegas/Cabo/Aspen — adjust to your real numbers.
 
+### 10. Phone number (find-and-replace)
+Every page's footer, plus the homepage's JSON-LD, has a placeholder phone number. Search the repo for `XXX-XXX-XXXX` and `XXXXXXXXXX` and replace both the display text and the `tel:+1XXXXXXXXXX` links with your real number — do this everywhere it appears, since search engines penalize inconsistent NAP (Name/Address/Phone) data across your site and Google Business Profile.
+
+### 11. Custom domain cutover (find-and-replace)
+Once your real domain is live (step 5), every `https://nojetlag.netlify.app` reference needs to become your real domain — canonical tags, Open Graph/Twitter `og:url` tags, the JSON-LD structured data blocks, `sitemap.xml`, and the `Sitemap:` line in `robots.txt`. Search the repo for `nojetlag.netlify.app` to find every instance.
+
+## SEO
+
+**Done already:**
+- Per-page `<title>`/meta description tuned for route + intent keywords ("private jet Los Angeles to Las Vegas", etc.), canonical tags, Open Graph/Twitter tags on every indexable page.
+- `TravelAgency` structured data (JSON-LD) on the homepage, `Service` + `BreadcrumbList` + `FAQPage` structured data on each package page — deliberately no `Offer`/price schema, since pricing is always "starting at," never a locked fare, and Google treats Offer/Product schema as a promise of a fixed, bookable price.
+- Visible FAQ sections (not just hidden schema) on the homepage and each package page, written as direct Q&A under clear headings — this is what Google's AI Overviews extract from, per the local-seo-ai-overview-checklist skill's guidance on structured, extractable content.
+- `sitemap.xml` + `Sitemap:` reference in `robots.txt`; `/admin/` and the two attorney-pending legal pages stay out of the index (`noindex` + excluded from the sitemap) until they're finalized.
+- One dedicated page per destination (Vegas/Cabo/Aspen) rather than one generic "packages" page — this is the single highest-leverage local-SEO move per that skill's checklist, and the site already had this structure from the original build.
+
+**Still needs your action** (accounts/verification I can't do on your behalf):
+- **Google Business Profile** — create and verify one for LA Jet Charter, category "Travel agency" or "Airport shuttle service"/closest match for air charter brokers; as a service-area business you can hide your exact address and set a service radius instead. An incomplete or unverified profile is one of the biggest local-ranking penalties, so fill out every field.
+- **NAP consistency** — once you have a real phone number and any public address, make sure they match exactly across this site, your GBP listing, and any social profiles.
+- **Citations** — submit to core local business directories (Yelp, Bing Places, Apple Maps, aviation-specific directories) with identical NAP info.
+- **Reviews** — after each completed trip, request a review within 24 hours; respond to every review (positive or negative) within 48 hours. Recency of reviews matters more than total count for AI Overview visibility.
+- **GBP photo/post cadence** — post fresh photos or updates at least monthly; profiles that go quiet for 30+ days measurably lose AI Overview visibility.
+- A proper 1200×630 social share image (`og:image`) — the site currently has none since there's no photography yet; add one per page once you have real imagery.
+
 ## Local development
 ```bash
 npm install
