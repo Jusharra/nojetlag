@@ -4,6 +4,8 @@ Static site (`public/`) + Netlify Functions (`netlify/functions/`) backed by Air
 
 ## What's already done
 
+- **GitHub**: code committed and pushed to `Jusharra/nojetlag` main branch.
+- **Netlify site created**: `la-jet-charter` (site ID `121f94b5-1966-4566-9217-81424726d514`), live at `http://la-jet-charter.netlify.app` once deployed. `AIRTABLE_BASE_ID` is already set as an env var on it.
 - **Airtable base** "LA Jet Charter" (`app3WA0xCNH9axTRV`) — all six tables from the build spec (Operators, Customers, Signature Route Packages, Empty Legs, Bookings, Compliance Log), formulas, and seed/placeholder records.
 - **Three Airtable automations** created as drafts — open the base's Automations tab and turn each on:
   - New Booking Request Alert
@@ -23,16 +25,16 @@ The site's functions need their own token (separate from this session's Airtable
 3. Access: this base only ("LA Jet Charter").
 4. Copy the token — you'll paste it into Netlify as `AIRTABLE_PAT` (step 4).
 
-### 2. Push this repo to GitHub
-This folder's `origin` already points at `https://github.com/Jusharra/nojetlag.git`. Once you're happy with the code:
-```bash
-git add -A
-git commit -m "Initial LA Jet Charter site + Airtable/Netlify backend"
-git push -u origin main
-```
+### 2. Code is already on GitHub
+Already done — `main` is pushed to `Jusharra/nojetlag`.
 
-### 3. Create the Netlify site and connect it to GitHub
-In Netlify: **Add new site → Import an existing project → GitHub → `Jusharra/nojetlag`**. Build settings are already defined in `netlify.toml` (publish directory `public`, functions directory `netlify/functions`) — you shouldn't need to change anything. Every push to `main` will now auto-deploy.
+### 3. Connect the Netlify site to GitHub for continuous deployment
+The Netlify site (`la-jet-charter`) is already created, but linking it to a GitHub repo requires *your* GitHub authorization click — that's not something that can be done on your behalf via API. One-time step:
+1. Go to `https://app.netlify.com/projects/la-jet-charter`.
+2. **Site configuration → Build & deploy → Continuous deployment → Link repository** (or **Link site to Git**).
+3. Choose **GitHub → `Jusharra/nojetlag` → branch `main`**.
+4. Build settings are already defined in `netlify.toml` (publish directory `public`, functions directory `netlify/functions`, no build command needed) — Netlify should pick them up automatically; leave the defaults.
+5. Save. Every push to `main` will now auto-deploy.
 
 ### 4. Set environment variables in Netlify
 Site configuration → Environment variables → add:
